@@ -14,7 +14,8 @@ SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOGS_FOLDER
-echo "script started executed at : $(date)"
+echo "script started executed at : $(date)" | tee -a $LOG_FILE #tee is used because by echo statemnet it prints in the terminal but dosen't
+# store in the logs, in order to print in the terminal and store in the logs we use tee command.
 
 if [ $USERID -ne 0 ]; then 
     echo "Error: please run the command with the root privilages"
@@ -24,10 +25,10 @@ fi
 VALIDATE(){
 
     if [ $1 -ne 0 ]; then
-      echo -e "ERROR: Installing $2 is $R failed $N"
+      echo -e "ERROR: Installing $2 is $R failed $N" | tee -a $LOG_FILE
       exit 1
     else
-      echo -e "Installing $2 is $G success $N"
+      echo -e "Installing $2 is $G success $N" | tee -a $LOG_FILE
       #exit 0 -- if we want we can prvide but by default it takes 0 only
     fi
 
@@ -40,7 +41,7 @@ if [ $? -ne 0 ]; then
    dnf install mysql -y &>>$LOG_FILE
    VALIDATE $? "MYSQL"
 else
-   echo -e "MYSQL is already installed so $Y skipping $N"
+   echo -e "MYSQL is already installed so $Y skipping $N" | tee -a $LOG_FILE
 fi
 
 dnf list installed nginx &>>$LOG_FILE
@@ -49,7 +50,7 @@ if [ $? -ne 0 ]; then
    dnf install nginx -y &>>$LOG_FILE
    VALIDATE $? "NGINX"
 else
-   echo -e "NGINX is already installed so $Y skipping $N"
+   echo -e "NGINX is already installed so $Y skipping $N" | tee -a $LOG_FILE
 fi
 
 
@@ -59,5 +60,5 @@ if [ $? -ne 0 ]; then
    dnf install python3 -y &>>$LOG_FILE
    VALIDATE $? "PYTHON3"
 else
-   echo -e "PYTHON3 is already installed do $Y skipping $N"
+   echo -e "PYTHON3 is already installed do $Y skipping $N" | tee -a $LOG_FILE
 fi
