@@ -10,4 +10,6 @@ echo "name of the script execution : $0" # dynamically provides the name of the 
 echo "current working directory : $PWD" #provides present working directory
 echo "who is running this: $USER" #who is running this script
 echo "User's home directory: $HOME" # Users home directory
-echo "PID of the script: $$" #when we are executing this script PID will be generated, PID of the scrit 
+echo "PID of the script: $$" #when we are executing this script PID will be generated, PID of the scrit
+sleep 10 &
+echo "PID of the last command in background is : $!" #PID of last command which is running in the background 
