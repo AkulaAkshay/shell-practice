@@ -5,7 +5,14 @@
 
 N1=100
 N2=200
-NAME="AKSHAY"
+NAME="AKSHAY" #this is a string, not a number hence shell will consider it as zero "0"
 
 SUM=$(($N1+$N2+$NAME))
 echo "sum of two numbers is: ${SUM}"
+
+#-----------------------------------
+#ARRAY - list of string or numbers
+LEADERS=("modi", "putin", "trump")
+
+echo "ALL Leaders: ${LEADERS}[@]"
+echo "ALL Leaders: ${LEADERS}[*]"
