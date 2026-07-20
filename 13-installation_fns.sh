@@ -11,7 +11,7 @@ fi
 
 VALIDATE(){
 
-    if [ $1 -ne 0]; then
+    if [ $1 -ne 0 ]; then
       echo "ERROR: Installing $2 is failed"
       exit 1
     else
