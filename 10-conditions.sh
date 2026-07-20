@@ -6,6 +6,8 @@ NUMBER=$1
 
 if [ $NUMBER -lt 10 ]; then
     echo "GIVEN Number "${NUMBER}" is less than 10"
+elif [ $NUMBER -eq 10 ]; then
+    echo "GIVEN Number "${NUMBER}" is  equal to 10"
 else
     echo "GIVEN Number "${NUMBER}" is grater than or equal to 10"
 fi
