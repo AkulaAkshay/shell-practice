@@ -13,3 +13,8 @@ echo "User's home directory: $HOME" # Users home directory
 echo "PID of the script: $$" #when we are executing this script PID will be generated, PID of the scrit
 sleep 10 &
 echo "PID of the last command in background is : $!" #PID of last command which is running in the background 
+
+#$? - exit code --> 0-success; 1 to 127-failure ----> #? - checks for last executed command in the shell
+#[when we provide a command , the exit status of that particular command i.e., whether it 
+#got success or failed, the shell stores in this #? - we only need to print and check from this]
+
