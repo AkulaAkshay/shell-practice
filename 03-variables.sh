@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #no space before or after =
-person1=AA
-person2=potti
+person1="AA"
+person2="potti"
 
 echo "$person1: Hi $person2, how are you?"
 echo "$person2: Hello $person1 iam fine, how are you?"
