@@ -5,6 +5,7 @@
 
 N1=100
 N2=200
+NAME="AKSHAY"
 
-SUM=$((N1+N2))
+SUM=$(($N1+$N2+$NAME))
 echo "sum of two numbers is: ${SUM}"
