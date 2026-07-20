@@ -8,3 +8,5 @@ echo "All the variables passed to the script: $*"
 
 echo "name of the script execution : $0" # dynamically provides the name of the script
 echo "current working directory : $PWD" #provides present working directory
+echo "who is running this: $USER" #who is running this script
+echo "User's home directory: $HOME" # Users home directory
