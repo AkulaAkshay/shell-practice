@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "please, enter your PIN NUMBER"
-read PIN_NUMBER # Here pin number is a variable 
+read -s PIN_NUMBER # Here pin number is a variable 
 
 #we generally don't print the pin number in real time scenario, here we are printing for practice purpose
 echo "PIN Entered is: $PIN_NUMBER"
