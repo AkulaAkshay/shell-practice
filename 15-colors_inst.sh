@@ -46,7 +46,7 @@ else
 fi
 
 
-dnf installed python3
+dnf list installed python3
 #installed if not found
 if [ $? -ne 0 ]; then
    dnf install python3 -y
