@@ -8,4 +8,4 @@ END_TIME=$(date +%s)
 
 TOTAL_TIME_DURATION=$(($END_TIME-$START_TIME))
 
-echo "The script executed in: $TOTAL_TIME_DURATION seconds"
+echo "The script executed in: ${TOTAL_TIME_DURATION} seconds"

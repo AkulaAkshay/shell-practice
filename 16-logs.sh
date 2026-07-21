@@ -11,7 +11,7 @@ N="\e[37m" #or 0m
 
 LOGS_FOLDER="/var/log/shell-script"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" #full path - /var/log/shell-script/16-logs.log
 
 mkdir -p $LOGS_FOLDER
 echo "script started executed at : $(date)" | tee -a $LOG_FILE #tee is used because by echo statemnet it prints in the terminal but dosen't
@@ -62,3 +62,4 @@ if [ $? -ne 0 ]; then
 else
    echo -e "PYTHON3 is already installed do $Y skipping $N" | tee -a $LOG_FILE
 fi
+
