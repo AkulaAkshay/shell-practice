@@ -45,7 +45,7 @@ do
    # check the exit status : if exit status is 0 - already installed; -ne 0 then not installed -> we need to install it
    if [ $? -ne 0 ]; then
       dnf install $package -y &>>$LOG_FILE
-      VALIDATE() $? "$package" 
+      VALIDATE $? "$package" 
     else
       echo -e "$package is already installed .. so $Y SKIPPING $N"   
     fi
