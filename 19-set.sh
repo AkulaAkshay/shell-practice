@@ -8,6 +8,9 @@
 #kjnjnjlkdsa
 #echo "statement2: After error statements"
 
+
+set -e
+
 echo "HELLO"
 echo "statement1: Before error statements"
 kjnjnjlkdsa
