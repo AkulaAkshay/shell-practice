@@ -18,3 +18,5 @@ echo "PID of the last command in background is : $!" #PID of last command which 
 #[when we provide a command , the exit status of that particular command i.e., whether it 
 #got success or failed, the shell stores in this #? - we only need to print and check from this]
 
+
+#USERID=$(id -u)USERID=$(id -u) --> to execute a command and take the o/p of the command into a variable

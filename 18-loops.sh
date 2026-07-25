@@ -42,7 +42,7 @@ do
    # check whether that particular package is installed or not?
    dnf list installed $package &>>$LOG_FILE
 
-   # check the exit status : if exit status is 0 - already installed; -ne 0 then not installed -> we need to install it
+   # check the exit status : if exit status is 0 - already installed; -ne 0 then not installed -> we need to install it 
    if [ $? -ne 0 ]; then
       dnf install $package -y &>>$LOG_FILE
       VALIDATE $? "$package" 
@@ -50,3 +50,131 @@ do
       echo -e "$package is already installed .. so $Y SKIPPING $N"   
     fi
 done
+
+#-------
+
+
+{
+    "Groups": [],
+    "Instances": [
+        {
+            "AmiLaunchIndex": 0,
+            "ImageId": "ami-0220d79f3f480ecf5",
+            "InstanceId": "i-052e3c3c64f841017",
+            "InstanceType": "m3.medium",
+            "LaunchTime": "2026-07-21T05:46:05+00:00",
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "Placement": {
+                "AvailabilityZone": "us-east-1b",
+                "GroupName": "",
+                "Tenancy": "default"
+            },
+            "PrivateDnsName": "ip-172-31-90-68.ec2.internal",
+            "PrivateIpAddress": "172.31.90.68",
+            "ProductCodes": [],
+            "PublicDnsName": "",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "StateTransitionReason": "",
+            "SubnetId": "subnet-08e58aa02bea596ff",
+            "VpcId": "vpc-01f1a1a0abeb65be4",
+            "Architecture": "x86_64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "5ed2f671-88e4-4b7c-819a-c09c0c31dee4",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2026-07-21T05:46:05+00:00",
+                        "AttachmentId": "eni-attach-02c1228dee6e11622",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupName": "allow-all-ports",
+                            "GroupId": "sg-0a6ae722a96642f1b"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "12:a8:50:3d:f1:4d",
+                    "NetworkInterfaceId": "eni-0eac8c0ad52c2a67e",
+                    "OwnerId": "644271348441",
+                    "PrivateDnsName": "ip-172-31-90-68.ec2.internal",
+                    "PrivateIpAddress": "172.31.90.68",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateDnsName": "ip-172-31-90-68.ec2.internal",
+                            "PrivateIpAddress": "172.31.90.68"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-08e58aa02bea596ff",
+                    "VpcId": "vpc-01f1a1a0abeb65be4",
+                    "InterfaceType": "interface"
+                }
+            ],
+            "RootDeviceName": "/dev/sda1",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupName": "allow-all-ports",
+                    "GroupId": "sg-0a6ae722a96642f1b"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "Test"
+                }
+            ],
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 1,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "optional",
+                "HttpPutResponseHopLimit": 1,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi-preferred",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default"
+            },
+            "CurrentInstanceBootMode": "legacy-bios"
+        }
+    ],
+    "OwnerId": "644271348441",
+    "ReservationId": "r-0064684cc2676c4fb"
+}

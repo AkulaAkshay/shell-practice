@@ -8,3 +8,7 @@ echo "$person1: Hi $person2, how are you?"
 echo "$person2: Hello $person1 iam fine, how are you?"
 echo "$person1: iam fine, what are you learning now?"
 echo "$person2: $person1 iam learning shell scripting, what about you?"
+
+
+#calling a variable --> $person1 or ${person1}
+#executing a command and taking its output into a variable --> var1=$(echo "HI")
