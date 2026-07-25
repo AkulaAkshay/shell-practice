@@ -25,11 +25,11 @@
 
 set -e
 
-error(){
-     echo "There is an error in the line: $LINENO and in the command: $BASH_COMMAND " #LINENO- get the line number where the error occured; BASH_COMMAND-get the command that failed
-}
+# error(){
+#      echo "There is an error in the line: $LINENO and in the command: $BASH_COMMAND " #LINENO- get the line number where the error occured; BASH_COMMAND-get the command that failed
+# }
 
-trap error ERR
+trap There is an error in the line: $LINENO and in the command: $BASH_COMMAND " ERR
 
 echo "HELLO"
 echo "statement1: Before error statements"
