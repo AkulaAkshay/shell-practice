@@ -26,7 +26,7 @@
 set -e
 
 error(){
-    echo "There is an error"
+    echo "There is an error in the line: $LINENO and in the command: $BAHCOMMAND " #LINENO-line number; BASHCOMMAND-command
 }
 
 trap error ERR
@@ -34,4 +34,5 @@ trap error ERR
 echo "HELLO"
 echo "statement1: Before error statements"
 kjnjnjlkdsa # shell will uderstand that there is an error here and signals ERR. since ERR is in line 32 (3rd word), the 32nd line executes that will intern call the error function and that error function will be called and content present in that function will be executed.
+#if we want to know that in which line we encountered the error and in which command we encountered the error we have some special variables, if we use them we can get the exact line number, command where the we got an error.
 echo "statement2: After error statements"
