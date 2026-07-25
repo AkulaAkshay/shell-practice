@@ -26,7 +26,7 @@
 set -e
 
 error(){
-    echo "There is an error in the line: $LINENO and in the command: $BAHCOMMAND " #LINENO-line number; BASHCOMMAND-command
+    echo "There is an error in the line: $LINENO and in the command: $BASH_COMMAND " #LINENO-line number; BASH_COMMAND-command
 }
 
 trap error ERR
