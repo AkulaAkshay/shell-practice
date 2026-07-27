@@ -6,10 +6,10 @@
 # ---------
 # we will have source directory and destination directory
 # check whether the source directory and destination directory exists or not, if it doesn't exist then we will exit the script with non-zero exit code.
-# find out the files which are older than 14 days
-# zip the files which are older than 14 days 
+# find out the files which are older than $DAYS (14) days
+# zip the files which are older than $DAYS days 
 # move the zipped files to the destination directory -> there will be some teams like storage teams, etc., they will keep the zipped files in the another storage server for backup purpose, so that if we need the logs in future we can get it from the backup server.
-# delete the files which are older than 14 days from the source directory
+# delete the files which are older than $DAYS days from the source directory
 # Daily login into the server and deleting the old logs is a tedious task, so we will automate this process --> we have some thing called crone tab (automatic scheduler).
 
 
@@ -30,7 +30,7 @@ MYSQL_HOST=mysql.akshaysunny.space
 
 SOURCE_DIR=$1
 DESTINATION_DIR=$2
-
+DAYS=${3:-14} #if user doesn't provide the 3rd argument then by default it will take 14 days, if user provides the 3rd argument then it will take that value.
 
 mkdir -p $LOGS_FOLDER
 echo "script started executed at : $(date)" | tee -a $LOG_FILE
@@ -71,4 +71,5 @@ fi
 #     echo -e " $R destination directory $DESTINATION_DIR does not exist. $N"
 #     exit 1
 # fi
+
 
