@@ -78,8 +78,15 @@ FILES=$( find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS ) #find command wi
 
 if [ ! -z "${FILES}" ]; then
     #not empty
-    echo -e " $R Found files older than $DAYS days in $SOURCE_DIR $N" 
-    
+    echo -e " Found files $FILES" 
+     # if files are found then we will zip the files and move to the destination directory and delete the files from the source directory.
+    #we need to decide the file name with the timestamp
+    TIMESTAMP=$(date +%F-%H-%M-%S)
+    #ZIPFILE
+    ZIP_FILE_NAME=$"DEST_DIR/app-logs-$TIMESTAMP.zip"
+    echo "zip file name: $ZIP_FILE_NAME"
+    echo $FILES | zip -@ -j "$ZIP_FILE_NAME" 
+     
 else
     echo -e " $G No files older than $DAYS days found in $SOURCE_DIR $N so $Y skipping... $N" 
 
