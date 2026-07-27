@@ -54,4 +54,21 @@ if [ $# -lt 2 ]; then
     exit 1
 fi
 
-find $SOURCE_DIR -type f -mtimme +14 -size +5 
+if [ ! -d $SOURCE_DIR ]; then
+    echo -e " $R source directory $SOURCE_DIR does not exist. $N" #| tee -a $LOG_FILE
+    exit 1
+fi
+
+if [ ! -d $DESTINATION_DIR ]; then
+    echo -e " $R destination directory $DESTINATION_DIR does not exist. $N" #| tee -a $LOG_FILE
+    exit 1
+fi
+
+# if [ ! -d "$SOURCE_DIR" ]; then
+#     echo -e " $R source directory $SOURCE_DIR does not exist. $N"
+#     exit 1
+# elif [ ! -d "$DESTINATION_DIR" ]; then
+#     echo -e " $R destination directory $DESTINATION_DIR does not exist. $N"
+#     exit 1
+# fi
+
