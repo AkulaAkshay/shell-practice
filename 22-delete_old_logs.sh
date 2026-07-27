@@ -18,7 +18,7 @@ MYSQL_HOST=mysql.akshaysunny.space
 mkdir -p $LOGS_FOLDER
 echo "script started executed at : $(date)" | tee -a $LOG_FILE
 
-SOURCE_DIR=/root
+SOURCE_DIR=/home/ec2-user/app-logs
 
 if [ ! -d "$SOURCE_DIR" ]; then
     echo -e "Source directory $SOURCE_DIR does not exist. Exiting."
