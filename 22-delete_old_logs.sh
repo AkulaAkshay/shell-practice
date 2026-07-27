@@ -28,4 +28,7 @@ fi
 while IFS= read -r filepath
 do
     echo "Deleting the old log file: $filepath" 
+    rm -f $filepath
+    echo "Deleted the old log file: $filepath"
+
 done <<< $SOURCE_DIR
