@@ -25,3 +25,7 @@ if [ ! -d "$SOURCE_DIR" ]; then
     exit 1
 fi
 
+while IFS= read -r filepath
+do
+    echo "Deleting the old log file: $filepath" 
+done >>> $SOURCE_DIR
