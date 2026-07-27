@@ -15,7 +15,8 @@ echo "countdown completed"
 echo "Time is up !!"
 
 
-while IFS= read -r line; do
+while IFS= read -r line
+do
 
     echo "processing line is:: $line"
 

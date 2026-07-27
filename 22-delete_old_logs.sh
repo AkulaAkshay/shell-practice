@@ -20,15 +20,22 @@ echo "script started executed at : $(date)" | tee -a $LOG_FILE
 
 SOURCE_DIR=/home/ec2-user/app-logs
 
-if [ ! -d "$SOURCE_DIR" ]; then
-    echo -e "Source directory $SOURCE_DIR does not exist. Exiting."
+if [ ! -d $SOURCE_DIR ]; then
+    echo -e "Source directory $R .. $SOURCE_DIR does not exist. Exiting. $N " | tee -a $LOG_FILE
     exit 1
 fi
 
 while IFS= read -r filepath
 do
-    echo "Deleting the old log file: $filepath" 
+    echo "Deleting the old log file: $filepath" | tee -a $LOG_FILE
     rm -f $filepath
-    echo "Deleted the old log file: $filepath"
+    echo "Deleted the old log file: $filepath" | tee -a $LOG_FILE
 
 done <<< $SOURCE_DIR
+
+# steps:
+# 1. Took the source directory and checked whether the source directory exists or not, if it doesn't exist then we will exit the script with non-zero exit code.  
+# 2. Then find out the files
+# 3. log the files which are going to be deleted
+# 4. delete the files
+#* we should not delete the application logs according to the government regulations and also if we delete the application logs then we will not be able to debug the application in case of any issues. we should backup the application logs to another server and then delete the application logs from the source server. 
