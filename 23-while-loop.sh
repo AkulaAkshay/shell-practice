@@ -12,4 +12,11 @@ do
 done
 
 echo "countdown completed"
-echo "time completed"
+echo "Time is up !!"
+
+
+while IFS= read -r line; do
+
+    echo "processing line is:: $line"
+
+done < "20-script1.sh" #Input to the while loop is coming from the file 20-script1.sh, so we are using the redirection operator "<" to redirect the content of the file to the while loop.
