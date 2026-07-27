@@ -72,4 +72,15 @@ fi
 #     exit 1
 # fi
 
+FILES=$( find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS ) #find command will find the files which are older than $DAYS days and it will store in the variable FILE.
 
+#z- check whether the variable FILES is empty or not, if it is empty then it means there are no files which are older than $DAYS days, if it is not empty then it means there are files which are older than $DAYS days.
+
+if [ ! -z "${FILES}" ]; then
+    #not empty
+    echo -e " $R Found files older than $DAYS days in $SOURCE_DIR $N" 
+    
+else
+    echo -e " $G No files older than $DAYS days found in $SOURCE_DIR $N so $Y skipping... $N" 
+
+fi
