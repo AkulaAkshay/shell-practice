@@ -82,7 +82,7 @@ FILES=$( find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS ) #find command wi
 
 #check files are empty or not?
 if [ ! -z "${FILES}" ]; then
-    #not empty
+    #start archiving - if not empty
     echo -e " Found files $FILES" 
      # if files are found then we will zip the files and move to the destination directory and delete the files from the source directory.
     #we need to decide the file name with the timestamp
@@ -91,24 +91,25 @@ if [ ! -z "${FILES}" ]; then
     ZIP_FILE_NAME="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name: $ZIP_FILE_NAME"
     #zip
-    find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@  "$ZIP_FILE_NAME" 
+    # -j --> without this it will just copy the path, if we want to copy just the files we shoud use this "-j"
+    find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME" 
 
-    # #check if archival is success or not?
-    # if [ -f $ZIP_FILE_NAME ]; then
-    #     echo -e "archival of the file $ZIP_FILE_NAME is $G success $N"
+    #check if archival is success or not?
+    if [ -f $ZIP_FILE_NAME ]; then
+        echo -e "archival of the file $ZIP_FILE_NAME is $G success $N"
 
-    #     #delete the file if archival is success
-    #     while IFS= read -r filepath
-    #     do
-    #         echo "Deleting the file: $filepath
-    #         rm -f $filepath
-    #         echo "Deleted the file: $filepath
-    #     done
-    # else
-    #     echo "archiving the file: $ZIP_FILE_NAME is $R FAILED $N"
-    #     exit 1
+        #delete the file if archival is success
+        while IFS= read -r filepath
+        do
+            echo "Deleting the file: $filepath
+            rm -f $filepath
+            echo "Deleted the file: $filepath
+        done <<< $FILES
+    else
+        echo "archiving the file: $ZIP_FILE_NAME is $R FAILED $N"
+        exit 1
 
-    # fi 
+    fi 
 else
     echo -e " $G No files older than $DAYS days found in $SOURCE_DIR $N so $Y skipping... $N" 
 
