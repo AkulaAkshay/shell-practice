@@ -83,7 +83,7 @@ if [ ! -z "${FILES}" ]; then
     #we need to decide the file name with the timestamp
     TIMESTAMP=$(date +%F-%H-%M-%S)
     #ZIPFILE
-    ZIP_FILE_NAME=$"DEST_DIR/app-logs-$TIMESTAMP.zip"
+    ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name: $ZIP_FILE_NAME"
     echo $FILES | zip -@ -j "$ZIP_FILE_NAME" 
      
