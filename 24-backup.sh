@@ -25,7 +25,7 @@ SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 SCRIPT_DIR=$PWD # for absoulute path
 
 #LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" #full path - /var/log/shell-script/mongodb.log
-LOG_FILE="$LOGS_FOLDER/backup.log" # modified because we want to run this particular script(24-backup.sh) as a linux command- we will keep this script in /usr/bin/backup location [ all the liux commands like "which ls", .. will run in /usr/bin/ls , simiarly inorder to run our script 24-backup.sh as a command we keep this script in /usr/bin]
+LOG_FILE="$LOGS_FOLDER/backup.log" # modified because we want to run this particular script(24-backup.sh) as a linux command- we will keep this script in /usr/bin/backup location [ all the liux commands like "which ls", .. will run in /usr/bin/ls , simiarly inorder to run our script 24-backup.sh as a command we keep this script in /usr/bin] and if we want to run a script as a command we need to provide the execution access to that script. --> sudo su cp 24-backup.sh /usr/bin/backup and sudo chmod +x /usr/bin/backup --> when we want to run that script --> sudo su backup
 
 START_TIME=$(date +%s)
 MONGODB_HOST=mongodb.akshaysunny.space
