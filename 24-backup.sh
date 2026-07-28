@@ -85,7 +85,7 @@ if [ ! -z "${FILES}" ]; then
     #ZIPFILE
     ZIP_FILE_NAME="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name: $ZIP_FILE_NAME"
-    ind $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME" 
+    find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME" 
      
 else
     echo -e " $G No files older than $DAYS days found in $SOURCE_DIR $N so $Y skipping... $N" 
