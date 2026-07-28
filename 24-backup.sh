@@ -49,16 +49,19 @@ USAGE(){
     echo -e " $R Usage:: sudo su backup.sh <source_directory> <destination_directory> <number_of_days (optional, by default 14)> $N"  
 }
 
+#check arguments passed is more than 2 or not?
 if [ $# -lt 2 ]; then
     USAGE
     exit 1
 fi
 
+#check source dir exists or not?
 if [ ! -d $SOURCE_DIR ]; then
     echo -e " $R source directory $SOURCE_DIR does not exist. $N" #| tee -a $LOG_FILE
     exit 1
 fi
 
+#check destination dir exists or not?
 if [ ! -d $DESTINATION_DIR ]; then
     echo -e " $R destination directory $DESTINATION_DIR does not exist. $N" #| tee -a $LOG_FILE
     exit 1
@@ -72,10 +75,12 @@ fi
 #     exit 1
 # fi
 
+#find the files
 FILES=$( find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS ) #find command will find the files which are older than $DAYS days and it will store in the variable FILE.
 
 #z- check whether the variable FILES is empty or not, if it is empty then it means there are no files which are older than $DAYS days, if it is not empty then it means there are files which are older than $DAYS days.
 
+#check files are empty or not?
 if [ ! -z "${FILES}" ]; then
     #not empty
     echo -e " Found files $FILES" 
@@ -85,8 +90,25 @@ if [ ! -z "${FILES}" ]; then
     #ZIPFILE
     ZIP_FILE_NAME="$DESTINATION_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name: $ZIP_FILE_NAME"
+    #zip
     find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME" 
-     
+
+    #check if archival is success or not?
+    if [ -f $ZIP_FILE_NAME ]; then
+        echo -e "archival of the file $ZIP_FILE_NAME is $G success $N"
+
+        #delete the file if archival is success
+        while IFS= read -r filepath
+        do
+            echo "Deleting the file: $filepath
+            rm -f $filepath
+            echo "Deleted the file: $filepath
+        done
+    else
+        echo "archiving the file: $ZIP_FILE_NAME is $R FAILED $N"
+        exit 1
+
+    fi 
 else
     echo -e " $G No files older than $DAYS days found in $SOURCE_DIR $N so $Y skipping... $N" 
 
