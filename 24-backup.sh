@@ -23,7 +23,10 @@ N="\e[37m" #or 0m
 LOGS_FOLDER="/var/log/shell-roboshop"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
 SCRIPT_DIR=$PWD # for absoulute path
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" #full path - /var/log/shell-script/mongodb.log
+
+#LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" #full path - /var/log/shell-script/mongodb.log
+LOG_FILE="$LOGS_FOLDER/backup.log" # modified because we want to run this particular script(24-backup.sh) as a linux command- we will keep this script in /usr/bin/backup location [ all the liux commands like "which ls", .. will run in /usr/bin/ls , simiarly inorder to run our script 24-backup.sh as a command we keep this script in /usr/bin]
+
 START_TIME=$(date +%s)
 MONGODB_HOST=mongodb.akshaysunny.space
 MYSQL_HOST=mysql.akshaysunny.space
